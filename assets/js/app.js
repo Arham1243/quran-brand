@@ -105,29 +105,29 @@ document.getElementById("trialForm").addEventListener("submit", function(event) 
 
 // Disable right-click (to prevent "Inspect" and copy-paste)
 // Disable context menu
-// document.addEventListener('contextmenu', function (e) {
-//   e.preventDefault();
-// }, false);
+document.addEventListener('contextmenu', function (e) {
+  e.preventDefault();
+}, false);
 
-// // Disable specific keyboard shortcuts
-// document.addEventListener('keydown', function (e) {
-//   // Check for specific key combinations
-//   if (e.key === "F12" || 
-//       (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J" || e.key === "C")) || 
-//       (e.ctrlKey && e.key === "U")) {
-//       e.preventDefault(); // Prevent default behavior
-//       e.stopPropagation(); // Stop the event from propagating
-//       return false;
-//   }
-// });
+// Disable specific keyboard shortcuts
+document.addEventListener('keydown', function (e) {
+  // Check for specific key combinations
+  if (e.key === "F12" || 
+      (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J" || e.key === "C")) || 
+      (e.ctrlKey && e.key === "U")) {
+      e.preventDefault(); // Prevent default behavior
+      e.stopPropagation(); // Stop the event from propagating
+      return false;
+  }
+});
 
-// // Attempt to block the `Ctrl+U` key combination more aggressively
-// document.addEventListener('keydown', function (e) {
-//   if (e.ctrlKey && e.key === "u") {
-//       e.preventDefault();
-//       e.stopImmediatePropagation();
-//       return false;
-//   }
-// });
+// Attempt to block the `Ctrl+U` key combination more aggressively
+document.addEventListener('keydown', function (e) {
+  if (e.ctrlKey && e.key === "u") {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      return false;
+  }
+});
 
 
