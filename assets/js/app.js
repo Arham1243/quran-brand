@@ -104,29 +104,30 @@ document.getElementById("trialForm").addEventListener("submit", function(event) 
 });
 
 // Disable right-click (to prevent "Inspect" and copy-paste)
-// Prevent right-click context menu
+// Disable context menu
 document.addEventListener('contextmenu', function (e) {
   e.preventDefault();
 }, false);
 
-// Disable specific keyboard shortcuts like F12, Ctrl+Shift+I, etc.
-document.onkeydown = function (e) {
+// Disable specific keyboard shortcuts
+document.addEventListener('keydown', function (e) {
+  // Check for specific key combinations
   if (e.key === "F12" || 
-      (e.ctrlKey && e.shiftKey && e.key === "I") || 
-      (e.ctrlKey && e.shiftKey && e.key === "J") || 
-      (e.ctrlKey && e.shiftKey && e.key === "C") || // Block Ctrl+Shift+C
+      (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J" || e.key === "C")) || 
       (e.ctrlKey && e.key === "U")) {
+      e.preventDefault(); // Prevent default behavior
+      e.stopPropagation(); // Stop the event from propagating
       return false;
   }
-};
+});
 
-// Block developer tools detection
-(function() {
-  let element = new Image();
-  Object.defineProperty(element, 'id', {
-      get: function() {
-          window.location.reload();
-      }
-  });
-  console.log(element);
-})();
+// Attempt to block the `Ctrl+U` key combination more aggressively
+document.addEventListener('keydown', function (e) {
+  if (e.ctrlKey && e.key === "u") {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      return false;
+  }
+});
+
+
