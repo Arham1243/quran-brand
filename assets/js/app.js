@@ -103,30 +103,30 @@ document.getElementById("trialForm").addEventListener("submit", function(event) 
   window.location.href = 'thank-you.html';
 });
 
-// // Disable right-click (to prevent "Inspect" and copy-paste)
-// // Prevent right-click context menu
-// document.addEventListener('contextmenu', function (e) {
-//   e.preventDefault();
-// }, false);
+// Disable right-click (to prevent "Inspect" and copy-paste)
+// Prevent right-click context menu
+document.addEventListener('contextmenu', function (e) {
+  e.preventDefault();
+}, false);
 
-// // Disable specific keyboard shortcuts like F12, Ctrl+Shift+I, etc.
-// document.onkeydown = function (e) {
-//   if (e.key === "F12" || 
-//       (e.ctrlKey && e.shiftKey && e.key === "I") || 
-//       (e.ctrlKey && e.shiftKey && e.key === "J") || 
-//       (e.ctrlKey && e.shiftKey && e.key === "C") || // Block Ctrl+Shift+C
-//       (e.ctrlKey && e.key === "U")) {
-//       return false;
-//   }
-// };
+// Disable specific keyboard shortcuts like F12, Ctrl+Shift+I, etc.
+document.onkeydown = function (e) {
+  if (e.key === "F12" || 
+      (e.ctrlKey && e.shiftKey && e.key === "I") || 
+      (e.ctrlKey && e.shiftKey && e.key === "J") || 
+      (e.ctrlKey && e.shiftKey && e.key === "C") || // Block Ctrl+Shift+C
+      (e.ctrlKey && e.key === "U")) {
+      return false;
+  }
+};
 
-// // Block developer tools detection
-// (function() {
-//   let element = new Image();
-//   Object.defineProperty(element, 'id', {
-//       get: function() {
-//           window.location.reload();
-//       }
-//   });
-//   console.log(element);
-// })();
+// Block developer tools detection
+(function() {
+  let element = new Image();
+  Object.defineProperty(element, 'id', {
+      get: function() {
+          window.location.reload();
+      }
+  });
+  console.log(element);
+})();
