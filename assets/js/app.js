@@ -100,15 +100,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.getElementById("trialForm").addEventListener("submit", function(event) {
   event.preventDefault(); 
-  window.location.href = 'thank-you.php';
+  window.location.href = 'thank-you.html';
 });
 
 // Disable right-click (to prevent "Inspect" and copy-paste)
+// Prevent right-click context menu
 document.addEventListener('contextmenu', function (e) {
   e.preventDefault();
 }, false);
 
-// Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C, and Ctrl+U (common shortcuts to open DevTools)
+// Disable specific keyboard shortcuts like F12, Ctrl+Shift+I, etc.
 document.onkeydown = function (e) {
   if (e.key === "F12" || 
       (e.ctrlKey && e.shiftKey && e.key === "I") || 
@@ -119,7 +120,7 @@ document.onkeydown = function (e) {
   }
 };
 
-// Optional: Reload the page if DevTools are opened (not foolproof)
+// Block developer tools detection
 (function() {
   let element = new Image();
   Object.defineProperty(element, 'id', {
